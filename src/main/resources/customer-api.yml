@@ -16,6 +16,14 @@ paths:
   /customer/{id}:
     get:
       operationId: getCustomer
+      parameters:
+        - name: id
+          in: path
+          description: find customer
+          required: true
+          schema: 
+            type: string
+          
       summary: Get customer details
       tags: [ 'Customer Service' ]
       responses:
@@ -24,9 +32,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                items:
-                  $ref: '#/components/schemas/Customer'
+                $ref: '#/components/schemas/Customer'
         '500':
           description: Internal Server Error
         '404':
